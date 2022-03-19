@@ -5,6 +5,7 @@ import com.hyunjung.finalproject.core.SimpleEntityRepository;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+@EnableJpaAuditing
 @EntityScan("com.hyunjung.finalproject.core")
 @EnableJpaRepositories("com.hyunjung.finalproject.core")
 @RestController
