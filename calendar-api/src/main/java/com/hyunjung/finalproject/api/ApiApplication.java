@@ -17,7 +17,7 @@ import java.util.List;
 @EntityScan("com.hyunjung.finalproject.core")
 @EnableJpaRepositories("com.hyunjung.finalproject.core")
 @RestController
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = "com.hyunjung.finalproject")
 public class ApiApplication {
 
     private final SimpleEntityRepository repository;

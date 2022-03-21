@@ -3,6 +3,7 @@ package com.hyunjung.finalproject.core.service;
 import com.hyunjung.finalproject.core.domain.entity.User;
 import com.hyunjung.finalproject.core.domain.entity.repository.UserRepository;
 import com.hyunjung.finalproject.core.dto.UserCreatReq;
+import com.hyunjung.finalproject.core.util.Encryptor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +14,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class UserService {
 
+    private final Encryptor encryptor;
     private final UserRepository userRepository;
 
     @Transactional
@@ -25,7 +27,7 @@ public class UserService {
         return userRepository.save(new User(
                 userCreatReq.getName(),
                 userCreatReq.getEmail(),
-                userCreatReq.getPassword(),
+                encryptor.encrypt(userCreatReq.getPassword()),
                 userCreatReq.getBirthday()
         ));
     }
@@ -34,6 +36,11 @@ public class UserService {
     public Optional<User> findPwMatchUser(String email, String password) {
 
         return userRepository.findByEmail(email)
-                .map(user -> user.getPassword().equals(password) ? user : null);
+                .map(user -> user.isMatch(encryptor, password) ? user : null);
+    }
+    @Transactional
+    public User findByUserId(Long userId){
+        return userRepository.findById(userId)
+                .orElseThrow(()->new RuntimeException("no user by id."));
     }
 }

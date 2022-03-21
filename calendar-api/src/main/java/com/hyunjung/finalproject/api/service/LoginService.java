@@ -16,7 +16,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class LoginService {
 
-    private final static String LOGIN_SESSION_KEY = "USER_ID";
+    public final static String LOGIN_SESSION_KEY = "USER_ID";
     private final UserService userService;
 
     @Transactional
@@ -32,6 +32,7 @@ public class LoginService {
                 signUpReq.getBirthday()
         ));
         session.setAttribute(LOGIN_SESSION_KEY, user.getId());
+
     }
 
     @Transactional
@@ -51,7 +52,9 @@ public class LoginService {
         }else{
             throw new RuntimeException("비밀번호 또는 이메일이 맞지 않습니다.");
         }
+
     }
+
 
     public void logout(HttpSession session){
         /**
