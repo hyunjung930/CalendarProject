@@ -4,7 +4,6 @@ import com.hyunjung.finalproject.core.domain.entity.User;
 import com.hyunjung.finalproject.core.util.Encryptor;
 import org.junit.jupiter.api.Test;
 
-import javax.persistence.Table;
 import java.time.LocalDate;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -22,7 +21,7 @@ public class UserTest {
             return true;
         }
     };
-    @Test
+    //@Test
     void isMatchTest(){
 
         final User me = new User("meme","email","pw", LocalDate.now());

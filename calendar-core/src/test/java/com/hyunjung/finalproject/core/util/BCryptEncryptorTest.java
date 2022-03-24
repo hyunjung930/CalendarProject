@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class BCryptEncryptorTest {
 
-    @Test
+   // @Test
     void test(){
         final String origin = "password";
         final Encryptor encryptor = new BCryptEncryptor();

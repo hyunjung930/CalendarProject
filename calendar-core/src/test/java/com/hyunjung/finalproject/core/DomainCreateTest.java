@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class DomainCreateTest {
 
-   @Test
+   //@Test
     void eventCreate(){
        final User me = new User("meme","email", "pw", LocalDate.now()) ;
        final Schedule taskSchedule = Schedule.task("할일", "청소하기",LocalDateTime.now(),me);

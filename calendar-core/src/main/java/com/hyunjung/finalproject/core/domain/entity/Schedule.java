@@ -18,7 +18,6 @@ import java.util.List;
 @Entity
 public class Schedule extends BaseEntity{
 
-
     private LocalDateTime startAt;
     private LocalDateTime endAt;
     private String title;
@@ -31,7 +30,8 @@ public class Schedule extends BaseEntity{
     @Enumerated(EnumType.STRING)
     private ScheduleType scheduleType;
 
-    public static Schedule event(String title, String description, LocalDateTime startAt, LocalDateTime endAt, User writer){
+    public static Schedule event(String title, String description,
+                                 LocalDateTime startAt, LocalDateTime endAt, User writer){
         return Schedule.builder()
                 .title(title)
                 .description(description)
