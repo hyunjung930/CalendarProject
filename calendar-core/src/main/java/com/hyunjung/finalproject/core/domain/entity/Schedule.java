@@ -72,7 +72,6 @@ public class Schedule extends BaseEntity{
         return new Event(this);
     }
 
-    public Notification toNotification(){
-        return new Notification(this);
+    public Notification toNotification(){ return new Notification(this);
     }
 }

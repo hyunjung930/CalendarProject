@@ -26,7 +26,7 @@ public class Engagement extends BaseEntity{
     @ManyToOne
     private User attendee;
 
-    @Enumerated(value = EnumType.STRING)
+    @Enumerated(EnumType.STRING)
     private RequestStatus requestStatus;
 
     public Event getEvent() { return  schedule.toEvent(); }
