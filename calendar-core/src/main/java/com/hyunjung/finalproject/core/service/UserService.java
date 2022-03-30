@@ -1,5 +1,7 @@
 package com.hyunjung.finalproject.core.service;
 
+import com.hyunjung.finalproject.core.Exception.CalendarException;
+import com.hyunjung.finalproject.core.Exception.ErrorCode;
 import com.hyunjung.finalproject.core.domain.entity.User;
 import com.hyunjung.finalproject.core.domain.entity.repository.UserRepository;
 import com.hyunjung.finalproject.core.dto.UserCreatReq;
@@ -21,7 +23,7 @@ public class UserService {
     public User creat(UserCreatReq userCreatReq) {
         userRepository.findByEmail(userCreatReq.getEmail())
                 .ifPresent(u-> {
-                    throw new RuntimeException("이미 존재하는 유저입니다.");
+                    throw new CalendarException(ErrorCode.USER_NOT_FOUND);
                 });
 
         return userRepository.save(new User(
@@ -34,13 +36,12 @@ public class UserService {
 
     @Transactional
     public Optional<User> findPwMatchUser(String email, String password) {
-
         return userRepository.findByEmail(email)
                 .map(user -> user.isMatch(encryptor, password) ? user : null);
     }
     @Transactional
     public User findByUserId(Long userId){
         return userRepository.findById(userId)
-                .orElseThrow(()->new RuntimeException("no user by id."));
+                .orElseThrow(()->new CalendarException(ErrorCode.USER_NOT_FOUND));
     }
 }

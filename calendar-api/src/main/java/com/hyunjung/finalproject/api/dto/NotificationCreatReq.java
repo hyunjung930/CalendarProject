@@ -1,5 +1,7 @@
 package com.hyunjung.finalproject.api.dto;
 
+import com.hyunjung.finalproject.core.Exception.CalendarException;
+import com.hyunjung.finalproject.core.Exception.ErrorCode;
 import com.hyunjung.finalproject.core.util.TimeUnit;
 import lombok.Data;
 
@@ -34,7 +36,7 @@ public class NotificationCreatReq {
                         case YEAR:
                             return notifyAt.plusYears(increment);
                         default:
-                            throw new RuntimeException("bad request. not match time unit");
+                            throw new CalendarException(ErrorCode.BAD_REQUEST);
                     }
                 })
                 .collect(Collectors.toList());

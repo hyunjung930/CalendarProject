@@ -2,6 +2,8 @@ package com.hyunjung.finalproject.api.service;
 
 import com.hyunjung.finalproject.api.dto.AuthUser;
 import com.hyunjung.finalproject.api.dto.EventCreatReq;
+import com.hyunjung.finalproject.core.Exception.CalendarException;
+import com.hyunjung.finalproject.core.Exception.ErrorCode;
 import com.hyunjung.finalproject.core.domain.RequestStatus;
 import com.hyunjung.finalproject.core.domain.entity.Engagement;
 import com.hyunjung.finalproject.core.domain.entity.Schedule;
@@ -37,7 +39,7 @@ public class EventService {
                         eventCreatReq.getStartAt(),
                         eventCreatReq.getEndAt()))
         ){
-            throw new RuntimeException("cannot make engagement. period overlapped! ");
+            throw new CalendarException(ErrorCode.EVENT_CREATE_OVERLAPPED_PERIOD);
         }
         final Schedule eventSchedule = Schedule.event(
                 eventCreatReq.getTitle(),

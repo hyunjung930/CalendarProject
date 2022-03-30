@@ -1,6 +1,8 @@
 package com.hyunjung.finalproject.api.config;
 
 import com.hyunjung.finalproject.api.dto.AuthUser;
+import com.hyunjung.finalproject.core.Exception.CalendarException;
+import com.hyunjung.finalproject.core.Exception.ErrorCode;
 import org.springframework.core.MethodParameter;
 import org.springframework.web.bind.support.WebDataBinderFactory;
 import org.springframework.web.context.request.NativeWebRequest;
@@ -21,7 +23,7 @@ public class AuthUserResolver implements HandlerMethodArgumentResolver {
     public Object resolveArgument(MethodParameter parameter, ModelAndViewContainer mavContainer, NativeWebRequest webRequest, WebDataBinderFactory binderFactory) throws Exception {
         final Long userId = (Long) webRequest.getAttribute(LOGIN_SESSION_KEY, WebRequest.SCOPE_SESSION);
         if(userId == null){
-            throw new RuntimeException("bad request. no session");
+            throw new CalendarException(ErrorCode.BAD_REQUEST);
         }
         return AuthUser.of(userId);
     }

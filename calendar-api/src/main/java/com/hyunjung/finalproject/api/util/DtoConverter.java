@@ -4,6 +4,8 @@ import com.hyunjung.finalproject.api.dto.EventDto;
 import com.hyunjung.finalproject.api.dto.NotificationDto;
 import com.hyunjung.finalproject.api.dto.ScheduleDto;
 import com.hyunjung.finalproject.api.dto.TaskDto;
+import com.hyunjung.finalproject.core.Exception.CalendarException;
+import com.hyunjung.finalproject.core.Exception.ErrorCode;
 import com.hyunjung.finalproject.core.domain.entity.Schedule;
 
 public abstract class DtoConverter { //abstract를 사용해서 생성자를 만들지 못하게 한다.
@@ -37,7 +39,7 @@ public abstract class DtoConverter { //abstract를 사용해서 생성자를 만
                         .writerId(schedule.getWriter().getId())
                         .build();
             default:
-                throw new RuntimeException("bad request. not matched schedule type");
+                throw new CalendarException(ErrorCode.BAD_REQUEST);
         }
     }
 }

@@ -2,6 +2,8 @@ package com.hyunjung.finalproject.api.service;
 
 import com.hyunjung.finalproject.api.dto.LoginReq;
 import com.hyunjung.finalproject.api.dto.SignUpReq;
+import com.hyunjung.finalproject.core.Exception.CalendarException;
+import com.hyunjung.finalproject.core.Exception.ErrorCode;
 import com.hyunjung.finalproject.core.domain.entity.User;
 import com.hyunjung.finalproject.core.dto.UserCreatReq;
 import com.hyunjung.finalproject.core.service.UserService;
@@ -50,7 +52,7 @@ public class LoginService {
         if(user.isPresent()){
             session.setAttribute(LOGIN_SESSION_KEY,user.get().getId());
         }else{
-            throw new RuntimeException("비밀번호 또는 이메일이 맞지 않습니다.");
+            throw new CalendarException(ErrorCode.PASSWORD_NOT_MATCH);
         }
 
     }
