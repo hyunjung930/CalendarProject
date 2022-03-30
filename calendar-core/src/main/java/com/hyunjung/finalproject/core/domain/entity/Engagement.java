@@ -2,6 +2,7 @@ package com.hyunjung.finalproject.core.domain.entity;
 
 import com.hyunjung.finalproject.core.domain.Event;
 import com.hyunjung.finalproject.core.domain.RequestStatus;
+import com.hyunjung.finalproject.core.util.Period;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -33,8 +34,7 @@ public class Engagement extends BaseEntity{
     public Event getEvent() {
         return  schedule.toEvent(); }
 
-
-    public boolean isOverlapped(LocalDate date) {
-        return this.schedule.isOverlapped(date);
+    public boolean isOverlapped(Period period) {
+        return this.schedule.isOverlapped(period);
     }
 }

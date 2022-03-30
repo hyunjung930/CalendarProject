@@ -12,8 +12,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import java.time.LocalDate;
+import java.time.YearMonth;
 import java.util.List;
 
 import static com.hyunjung.finalproject.api.service.LoginService.LOGIN_SESSION_KEY;
@@ -39,7 +41,7 @@ public class ScheduleController {
 
     @PostMapping("/events")
     public ResponseEntity<Void> creatEvent(
-            @RequestBody EventCreatReq eventCreatReq,
+            @Valid @RequestBody EventCreatReq eventCreatReq,
             AuthUser authUser){
         eventService.creat(eventCreatReq, authUser);
         return ResponseEntity.ok().build();
@@ -59,6 +61,26 @@ public class ScheduleController {
             @RequestParam(required = false)
             @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date) {
         return scheduleQueryService.getScheduleByDay(authUser, date == null ? LocalDate.now() : date);
+        //date가 필수값(required = false)이 아니기 때문에 null 일수도 있기 때문에 null일 경우도 추가해줬음.
+
+    }
+
+    @GetMapping("/week")
+    public List<ScheduleDto> getScheduleByWeek(
+            AuthUser authUser,
+            @RequestParam(required = false)
+            @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate startOfWeek) {
+        return scheduleQueryService.getScheduleByWeek(authUser, startOfWeek == null ? LocalDate.now() : startOfWeek);
+        //date가 필수값(required = false)이 아니기 때문에 null 일수도 있기 때문에 null일 경우도 추가해줬음.
+
+    }
+
+    @GetMapping("/month")
+    public List<ScheduleDto> getScheduleByMonth(
+            AuthUser authUser,
+            @RequestParam(required = false)
+            @DateTimeFormat(pattern = "yyyy-MM") String yearMonth) {//2022-03
+        return scheduleQueryService.getScheduleByMonth(authUser, yearMonth == null ? YearMonth.now() : YearMonth.parse(yearMonth));
         //date가 필수값(required = false)이 아니기 때문에 null 일수도 있기 때문에 null일 경우도 추가해줬음.
 
     }
