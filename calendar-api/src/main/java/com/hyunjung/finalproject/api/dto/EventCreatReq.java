@@ -18,5 +18,6 @@ public class EventCreatReq {
     private final LocalDateTime startAt;
     @NotNull
     private final LocalDateTime endAt;
+    @NotNull
     private final List<Long> attendeeIds;
 }
