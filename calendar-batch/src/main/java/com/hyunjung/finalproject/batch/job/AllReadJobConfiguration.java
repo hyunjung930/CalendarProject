@@ -62,8 +62,6 @@ public class AllReadJobConfiguration {
     @Bean
     public JdbcCursorItemReader<Schedule> allReadCursorReader() {
         return new JdbcCursorItemReaderBuilder<Schedule>()
-                .verifyCursorPosition(false)
-                .fetchSize(FETCH_SIZE)
                 .dataSource(dataSource)
                 .rowMapper(new BeanPropertyRowMapper<>(Schedule.class))
                 .sql("select * from schedules order by id")

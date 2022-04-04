@@ -1,5 +1,6 @@
 package com.hyunjung.finalproject.api.service;
 
+import com.hyunjung.finalproject.api.controller.BatchController;
 import com.hyunjung.finalproject.api.dto.EngagementEmailStuff;
 import com.hyunjung.finalproject.core.domain.entity.Engagement;
 import lombok.RequiredArgsConstructor;
@@ -33,5 +34,10 @@ public class RealEmailService implements EmailService{
             );
         };
         emailSender.send(preparator);
+    }
+
+    @Override
+    public void sendAlarmMail(BatchController.SendMailBatchReq req) {
+        System.out.println("send alarm. " + req.toString());
     }
 }

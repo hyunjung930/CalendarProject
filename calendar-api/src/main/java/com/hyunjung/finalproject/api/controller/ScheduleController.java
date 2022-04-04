@@ -2,21 +2,18 @@ package com.hyunjung.finalproject.api.controller;
 
 import com.hyunjung.finalproject.api.dto.*;
 import com.hyunjung.finalproject.api.service.*;
-import com.hyunjung.finalproject.core.domain.Notification;
 import com.hyunjung.finalproject.core.domain.RequestStatus;
 import lombok.RequiredArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import java.time.LocalDate;
 import java.time.YearMonth;
 import java.util.List;
 
-import static com.hyunjung.finalproject.api.service.LoginService.LOGIN_SESSION_KEY;
 
 @RequiredArgsConstructor
 @RequestMapping("/api/schedules")

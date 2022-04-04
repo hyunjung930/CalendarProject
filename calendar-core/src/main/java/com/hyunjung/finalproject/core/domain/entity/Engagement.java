@@ -2,7 +2,6 @@ package com.hyunjung.finalproject.core.domain.entity;
 
 import com.hyunjung.finalproject.core.domain.Event;
 import com.hyunjung.finalproject.core.domain.RequestStatus;
-import com.hyunjung.finalproject.core.domain.ScheduleType;
 import com.hyunjung.finalproject.core.util.Period;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -10,13 +9,12 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
-@Table(name = "engagement")
+@Table(name = "engagements")
 @Entity
 public class Engagement extends BaseEntity{
 
@@ -31,7 +29,6 @@ public class Engagement extends BaseEntity{
 
     @Enumerated(EnumType.STRING)
     private RequestStatus requestStatus;
-
 
     public Event getEvent() {
         return  schedule.toEvent(); }
