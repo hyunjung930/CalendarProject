@@ -3,6 +3,7 @@ package com.hyunjung.finalproject.api.service;
 import com.hyunjung.finalproject.api.controller.BatchController;
 import com.hyunjung.finalproject.api.dto.EngagementEmailStuff;
 import com.hyunjung.finalproject.core.domain.entity.Engagement;
+import com.hyunjung.finalproject.core.domain.entity.Share;
 import lombok.RequiredArgsConstructor;
 import org.springframework.cglib.core.Local;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -39,5 +40,10 @@ public class RealEmailService implements EmailService{
     @Override
     public void sendAlarmMail(BatchController.SendMailBatchReq req) {
         System.out.println("send alarm. " + req.toString());
+    }
+
+    @Override
+    public void sendShareRequestMail(String email, String name, Share.Direction direction) {
+        System.out.println("send share request mail." + email + ", " + name + ", " + direction) ;
     }
 }
