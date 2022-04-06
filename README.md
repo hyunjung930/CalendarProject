@@ -24,10 +24,11 @@
       
     📍 기술스택
       JDk 11
-     Spring Boot 2.5.2 - Spring MVC
-     		       - Spring JPA
-		       - Spring Batch
-		       - Spring Mail
+     Spring Boot 2.5.2 
+     		- Spring MVC
+     		- Spring JPA
+		- Spring Batch
+		- Spring Mail
       
     📍 기타 
       thymeleaf(템플릿 엔진)
