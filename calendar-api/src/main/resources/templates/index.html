@@ -135,7 +135,7 @@
 
     signInForm.addEventListener('submit', (e) => {
         e.preventDefault();
-        axios.post("/api/login", {
+        axios.post("../api/login", {
             email: document.getElementById("signIn-email").value,
             password: document.getElementById("signIn-pw").value
         }).then((res) => {
