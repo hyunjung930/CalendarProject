@@ -35,6 +35,7 @@
 
 ---------------
 ### 💡 DB
+<img width="914" alt="DB" src="https://user-images.githubusercontent.com/96286052/170903588-959d44df-af97-4a50-88dc-0ed76acb593f.png">
 
 
 
